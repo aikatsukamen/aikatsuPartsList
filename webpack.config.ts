@@ -13,8 +13,8 @@ const commonConfig: Partial<Configuration> = {
   mode: isProduction ? 'production' : 'development',
   devtool: isProduction ? 'source-map' : 'cheap-source-map',
   resolve: {
-    extensions: ['.js', '.ts', '.tsx']
-  }
+    extensions: ['.js', '.ts', '.tsx'],
+  },
 };
 
 // webpack-dev-serverの設定
@@ -22,7 +22,7 @@ const devServerConfig: webpackDevServer.Configuration = {
   contentBase: 'docs',
   host: 'localhost',
   open: true,
-  hot: true
+  hot: true,
 };
 
 const config: Configuration = {
@@ -32,7 +32,7 @@ const config: Configuration = {
   entry: './src/gui/index.tsx',
   output: {
     path: `${__dirname}/docs/`,
-    filename: 'main.js'
+    filename: 'main.js',
   },
   module: {
     rules: [
@@ -41,8 +41,8 @@ const config: Configuration = {
         test: /\.tsx?$/,
         loader: 'ts-loader',
         options: {
-          transpileOnly: true
-        }
+          transpileOnly: true,
+        },
       },
       // CSS
       {
@@ -52,20 +52,20 @@ const config: Configuration = {
           {
             loader: 'css-loader',
             options: {
-              url: false
-            }
-          }
-        ]
+              url: false,
+            },
+          },
+        ],
       },
       // 画像ファイル
       {
         test: /\.png/,
-        use: ['url-loader']
-      }
-    ]
+        use: ['url-loader'],
+      },
+    ],
   },
   node: {
-    fs: 'empty'
+    fs: 'empty',
   },
   optimization: {
     minimizer: [
@@ -83,19 +83,19 @@ const config: Configuration = {
           ie8: false,
           keep_classnames: undefined,
           keep_fnames: false,
-          safari10: true
-        }
-      })
-    ]
+          safari10: true,
+        },
+      }),
+    ],
   },
   plugins: [
     new ForkTsCheckerWebpackPlugin({
       useTypescriptIncrementalApi: true,
       tsconfig: './tsconfig.json',
       checkSyntacticErrors: true,
-      reportFiles: ['src/**']
-    })
-  ]
+      reportFiles: ['src/**'],
+    }),
+  ],
 };
 
 export default [config];

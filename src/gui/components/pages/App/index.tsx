@@ -37,39 +37,27 @@ const App: React.SFC<PropsType> = (props: PropsType) => {
 
   return (
     <div>
-      <BrowserRouter>
+      <div>
+        <DrawerMenu navigationLabel={'パーツリスト'}>
+          <List>
+            <ListItem button onClick={() => window.open('https://kirakiratter.com/')}>
+              <ListItemIcon>
+                <LazyImage imageUrl={'./images/social_kkt.png'} height={30} />
+              </ListItemIcon>
+              <ListItemText primary={'キラキラッター'} />
+            </ListItem>
+            <ListItem button onClick={() => window.open('https://www.aikatsu.com/')}>
+              <ListItemText>DCDアイカツ！</ListItemText>
+            </ListItem>
+            <Divider />
+            <ListItem>本ツールはアイカツファンによる制作物であり、アイカツ公式とは一切関わりありません。</ListItem>
+          </List>
+        </DrawerMenu>
         <div>
-          <DrawerMenu navigationLabel={'パーツリスト'}>
-            <List>
-              <ListItem button onClick={() => window.open('https://kirakiratter.com/')}>
-                <ListItemIcon>
-                  <LazyImage imageUrl={'./images/social_kkt.png'} height={30} />
-                </ListItemIcon>
-                <ListItemText primary={'キラキラッター'} />
-              </ListItem>
-              <ListItem button onClick={() => window.open('https://www.aikatsu.com/')}>
-                <ListItemText>DCDアイカツ！</ListItemText>
-              </ListItem>
-              <Divider />
-              <ListItem>本ツールはアイカツファンによる制作物であり、アイカツ公式とは一切関わりありません。</ListItem>
-            </List>
-          </DrawerMenu>
-          <Route
-            exact
-            path={`/`}
-            render={innerProps => {
-              const query = queryString.parse(innerProps.location.search);
-
-              return (
-                <div>
-                  <PartsList list={props.list} />
-                </div>
-              );
-            }}
-          />
-          <Snackbar open={props.notify.isOpen} message={props.notify.message} variant={props.notify.variant} onClose={props.closeNotify} />
+          <PartsList list={props.list} />
         </div>
-      </BrowserRouter>
+        <Snackbar open={props.notify.isOpen} message={props.notify.message} variant={props.notify.variant} onClose={props.closeNotify} />
+      </div>
     </div>
   );
 };
