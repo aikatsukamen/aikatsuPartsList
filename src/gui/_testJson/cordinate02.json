@@ -1,0 +1,27 @@
+{
+  "name": "メガネ",
+  "category": "メガネ",
+  "image": "./images/glasses_01_009.png",
+  "example": "",
+  "version": "",
+  "animeChara": "",
+  "stars": {
+    "level": "",
+    "event": "",
+    "ranking": "",
+    "book": ""
+  },
+  "friends": {
+    "level": "",
+    "event": "",
+    "ranking": "",
+    "book": ""
+  },
+  "parade": {
+    "level": "",
+    "event": "",
+    "ranking": "",
+    "book": ""
+  },
+  "qr": ""
+}

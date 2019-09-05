@@ -1,0 +1,27 @@
+{
+  "name": "ピンクハート",
+  "category": "カラーコンタクト",
+  "image": "./images/eye_01_052.png",
+  "example": "",
+  "version": "",
+  "animeChara": "",
+  "stars": {
+    "level": "キュート100",
+    "event": "マイキャラパーツセレクション",
+    "ranking": "ナントカランキング",
+    "book": "アイカツスターズ公式ガイドブック\nなんかのグミ"
+  },
+  "friends": {
+    "level": "クール100",
+    "event": "マイキャラパーツセレクション",
+    "ranking": "フレンズランキング",
+    "book": "アイカツフレンズ公式ガイドブックSTEP1\n何とかかんとかグミ"
+  },
+  "parade": {
+    "level": "",
+    "event": "",
+    "ranking": "",
+    "book": ""
+  },
+  "qr": ""
+}
