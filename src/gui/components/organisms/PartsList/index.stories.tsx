@@ -1,7 +1,6 @@
 import React from 'react';
 
 import { storiesOf } from '@storybook/react';
-import { MemoryRouter } from 'react-router';
 import { action } from '@storybook/addon-actions';
 import Parts, { ComponentProps, ActionProps } from '.';
 
@@ -78,6 +77,4 @@ const cordinate: ComponentProps = {
 
 const actions: ActionProps = {};
 
-storiesOf('PartsList', module)
-  .addDecorator(story => <MemoryRouter initialEntries={['/', 'posts']}>{story()}</MemoryRouter>)
-  .add('例', () => <Parts {...cordinate} {...actions} />);
+storiesOf('PartsList', module).add('例', () => <Parts {...cordinate} {...actions} />);

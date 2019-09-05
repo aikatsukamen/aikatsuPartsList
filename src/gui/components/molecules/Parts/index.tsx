@@ -1,13 +1,10 @@
 import React from 'react';
-import { createStyles } from '@material-ui/core/styles';
-import IconButton from '@material-ui/core/IconButton';
-import FavoriteIcon from '@material-ui/icons/Favorite';
-import ShareIcon from '@material-ui/icons/Share';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import { Card, CardMedia, CardHeader, CardActions, Collapse, CardContent, Typography, Theme, Divider } from '@material-ui/core';
-import { withRouter, RouteComponentProps } from 'react-router';
+import { createStyles, Theme } from '@material-ui/core/styles';
+import Card from '@material-ui/core/Card';
+import CardHeader from '@material-ui/core/CardHeader';
+import Typography from '@material-ui/core/Typography';
+import Divider from '@material-ui/core/Divider';
 import { Parts } from '../../../../types/entity';
-import classNames from 'classnames';
 import { makeStyles } from '@material-ui/styles';
 import Modal from '../Modal';
 import LazyImage from '../../atom/LazyImage';
@@ -48,7 +45,7 @@ const useStyles = makeStyles((theme: Theme) =>
 export type ComponentProps = Parts;
 
 export type ActionProps = {};
-type PropsType = ComponentProps & ActionProps & RouteComponentProps;
+type PropsType = ComponentProps & ActionProps;
 
 const CordinateThumb: React.SFC<PropsType> = (props: PropsType) => {
   const classes = useStyles();
@@ -118,4 +115,4 @@ const CordinateThumb: React.SFC<PropsType> = (props: PropsType) => {
   );
 };
 
-export default withRouter(CordinateThumb);
+export default CordinateThumb;

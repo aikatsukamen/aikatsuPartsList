@@ -13,10 +13,8 @@ import MenuIcon from '@material-ui/icons/Menu';
 
 const styles = (theme: Theme) =>
   createStyles({
-    root: {
-    },
-    toolbar: {
-    },
+    root: {},
+    toolbar: {},
   });
 
 type ComponentProps = {

@@ -1,7 +1,9 @@
-import React, { InputHTMLAttributes } from 'react';
-import { createStyles } from '@material-ui/core/styles';
-import { Theme, Grid, TextField, Select, MenuItem } from '@material-ui/core';
-import { withRouter, RouteComponentProps } from 'react-router';
+import React from 'react';
+import { createStyles, Theme } from '@material-ui/core/styles';
+import Grid from '@material-ui/core/Grid';
+import TextField from '@material-ui/core/TextField';
+import Select from '@material-ui/core/Select';
+import MenuItem from '@material-ui/core/MenuItem';
 import * as Types from '../../../../types/entity';
 import Pagination from 'material-ui-flat-pagination';
 import { makeStyles } from '@material-ui/styles';
@@ -21,7 +23,7 @@ export type ComponentProps = {
 };
 
 export type ActionProps = {};
-type PropsType = ComponentProps & ActionProps & RouteComponentProps;
+type PropsType = ComponentProps & ActionProps;
 
 const Component: React.SFC<PropsType> = (props: PropsType) => {
   const classes = useStyles();
@@ -132,4 +134,4 @@ const Component: React.SFC<PropsType> = (props: PropsType) => {
   );
 };
 
-export default withRouter(Component);
+export default Component;

@@ -1,6 +1,4 @@
 import React from 'react';
-import { BrowserRouter, Route, Link } from 'react-router-dom';
-
 import { connect } from 'react-redux';
 import { Theme, createStyles, makeStyles } from '@material-ui/core/styles';
 import './App.css';
@@ -9,9 +7,11 @@ import DrawerMenu from '../../molecules/DrawerMenu';
 import Snackbar from '../../molecules/SnackBar';
 import Divider from '@material-ui/core/Divider';
 import { GlobalState, RootState } from '../../../reducers';
-import queryString from 'query-string';
 import LazyImage from '../../atom/LazyImage';
-import { List, ListItem, ListItemIcon, ListItemText } from '@material-ui/core';
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemIcon from '@material-ui/core/ListItemIcon';
+import ListItemText from '@material-ui/core/ListItemText';
 import PartsList from '../../organisms/PartsList';
 
 const useStyles = makeStyles((theme: Theme) =>
