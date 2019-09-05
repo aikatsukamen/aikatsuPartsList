@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "webpack-dev-server -d -w --inline",
-    "build": "webpack",
+    "build": "webpack -p",
     "storybook": "start-storybook -p 9009 -s docs -c .storybook",
     "build-storybook": "build-storybook -s docs -c .storybook",
     "pretest-visual": "zisui --serverCmd \"npm run storybook\" http://localhost:9009 -o actual_images",
