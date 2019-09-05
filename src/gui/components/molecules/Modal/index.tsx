@@ -9,10 +9,9 @@ const useStyles = makeStyles((theme: Theme) =>
       backgroundColor: 'initial',
       boxShadow: theme.shadows[5],
       padding: 0,
-      marginLeft: 'calc((100% - 300px) /2)',
-      marginTop: '5px',
     },
-  }));
+  }),
+);
 
 type ComponentProps = {
   open: boolean;

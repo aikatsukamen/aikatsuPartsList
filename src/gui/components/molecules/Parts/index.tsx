@@ -4,9 +4,9 @@ import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
 import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
+import Dialog from '@material-ui/core/Dialog';
 import { Parts } from '../../../../types/entity';
 import { makeStyles } from '@material-ui/styles';
-import Modal from '../Modal';
 import LazyImage from '../../atom/LazyImage';
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -37,7 +37,6 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     detail: {
       padding: 10,
-      backgroundColor: 'white',
     },
   }),
 );
@@ -59,7 +58,7 @@ const CordinateThumb: React.SFC<PropsType> = (props: PropsType) => {
         <CardHeader title={props.name} subheader={props.version} className={classes.header} disableTypography={true} />
       </Card>
 
-      <Modal open={expanded} modalClose={handleExpandClick}>
+      <Dialog open={expanded} onClose={handleExpandClick}>
         <div className={classes.detail}>
           <Typography variant={'h4'}>{props.name}</Typography>
 
@@ -110,7 +109,7 @@ const CordinateThumb: React.SFC<PropsType> = (props: PropsType) => {
             {props.parade.book && props.parade.book}
           </Typography>
         </div>
-      </Modal>
+      </Dialog>
     </div>
   );
 };
