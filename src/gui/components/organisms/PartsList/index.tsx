@@ -128,6 +128,7 @@ const Component: React.SFC<PropsType> = (props: PropsType) => {
           backgroundColor: 'white',
           position: 'fixed',
           width: '100%',
+          paddingTop: 10,
         }}
       >
         {/* 検索 */}
@@ -183,7 +184,7 @@ const Component: React.SFC<PropsType> = (props: PropsType) => {
       {/* リスト */}
       <div
         style={{
-          paddingTop: 140,
+          paddingTop: 160,
         }}
       >
         <Grid container direction="row" justify={'space-around'} alignItems={'flex-start'} spacing={1}>

@@ -52,7 +52,7 @@ const App: React.SFC<PropsType> = (props: PropsType) => {
             <ListItem>本ツールはアイカツファンによる制作物であり、アイカツ公式とは一切関わりありません。</ListItem>
           </List>
         </DrawerMenu>
-        <div style={{ paddingTop: 65 }}>
+        <div style={{ paddingTop: 55 }}>
           <PartsList list={props.list} />
         </div>
         <Snackbar open={props.notify.isOpen} message={props.notify.message} variant={props.notify.variant} onClose={props.closeNotify} />
