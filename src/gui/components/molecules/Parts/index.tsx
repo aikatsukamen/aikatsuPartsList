@@ -8,6 +8,7 @@ import Dialog from '@material-ui/core/Dialog';
 import { Parts } from '../../../../types/entity';
 import { makeStyles } from '@material-ui/styles';
 import LazyImage from '../../atom/LazyImage';
+import QRCode from 'qrcode.react';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -61,6 +62,14 @@ const Parts: React.SFC<PropsType> = (props: PropsType) => {
       <Dialog open={expanded} onClose={handleExpandClick}>
         <div className={classes.detail}>
           <Typography variant={'h4'}>{props.name}</Typography>
+
+          {props.qr ? (
+            <div style={{ textAlign: 'center' }}>
+              <QRCode value={props.qr} level={'L'} size={100} />
+            </div>
+          ) : (
+            ''
+          )}
 
           <Divider />
 
