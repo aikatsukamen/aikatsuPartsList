@@ -8,12 +8,23 @@ import * as Types from '../../../../types/entity';
 import Pagination from 'material-ui-flat-pagination';
 import { makeStyles } from '@material-ui/styles';
 import Checkbox from '@material-ui/core/Checkbox';
+import Button from '@material-ui/core/Button';
 import Parts from '../../molecules/Parts';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
-      margin: 10,
+      margin: 5,
+      marginTop: 0,
+    },
+    pagenationStandardButton: {
+      paddingLeft: 6,
+      paddingRight: 6,
+    },
+    pagenationRootEllipsis: {
+      padding: 0,
+      marginLeft: -2,
+      marginRight: -2,
     },
   }),
 );
@@ -60,6 +71,21 @@ const Component: React.SFC<PropsType> = (props: PropsType) => {
     setOffset(selectOffset);
   };
 
+  const handleRandom = () => {
+    const eyeList = props.list.filter(item => item.category === 'カラーコンタクト');
+    const glassList = props.list.filter(item => item.category === 'メガネ');
+    const hairColorList = props.list.filter(item => item.category === 'ヘアカラー');
+    const harStyleList = props.list.filter(item => item.category === 'ヘアスタイル');
+
+    const eye = eyeList[Math.floor(Math.random() * eyeList.length)];
+    const glass = glassList[Math.floor(Math.random() * glassList.length)];
+    const color = hairColorList[Math.floor(Math.random() * hairColorList.length)];
+    const style = harStyleList[Math.floor(Math.random() * harStyleList.length)];
+
+    setDrawList([eye, glass, color, style]);
+    setOffset(0);
+  };
+
   // 入力に変化があった時の処理
   React.useEffect(() => {
     // パーツの絞り込み
@@ -91,45 +117,81 @@ const Component: React.SFC<PropsType> = (props: PropsType) => {
     });
 
     setDrawList(newList);
+    setOffset(0);
   }, [category, searchWord, props.list]);
 
   return (
     <div className={classes.root}>
-      {/* 検索 */}
-      <div>
+      {/* 固定領域 */}
+      <div
+        style={{
+          backgroundColor: 'white',
+          position: 'fixed',
+          width: '100%',
+        }}
+      >
+        {/* 検索 */}
         <div>
-          <TextField value={searchWord} onChange={handleSearchWordChange} fullWidth={true} placeholder={'フリーワード検索'} />
+          <div>
+            <TextField value={searchWord} onChange={handleSearchWordChange} fullWidth={true} placeholder={'フリーワード検索'} />
+          </div>
+          <div>
+            髪
+            <Checkbox checked={category.hairStyle} onChange={handleCategoryChange('hairStyle')} />
+            髪色
+            <Checkbox checked={category.hairColor} onChange={handleCategoryChange('hairColor')} />
+            目鏡
+            <Checkbox checked={category.glasses} onChange={handleCategoryChange('glasses')} />
+            カラコン
+            <Checkbox checked={category.eye} onChange={handleCategoryChange('eye')} />
+          </div>
+          <div>
+            <Button variant={'contained'} color={'primary'} size={'small'} onClick={handleRandom}>
+              ランダム
+            </Button>
+          </div>
         </div>
-        <div>
-          髪
-          <Checkbox checked={category.hairStyle} onChange={handleCategoryChange('hairStyle')} />
-          髪色
-          <Checkbox checked={category.hairColor} onChange={handleCategoryChange('hairColor')} />
-          目鏡
-          <Checkbox checked={category.glasses} onChange={handleCategoryChange('glasses')} />
-          カラコン
-          <Checkbox checked={category.eye} onChange={handleCategoryChange('eye')} />
+        {/* pagenation */}
+        <div style={{ display: 'flex' }}>
+          <Select
+            style={{ width: 55 }}
+            value={perPage}
+            onChange={e => {
+              setPerPage(Number(e.target.value));
+            }}
+          >
+            <MenuItem value={9}>9</MenuItem>
+            <MenuItem value={50}>50</MenuItem>
+            <MenuItem value={100}>100</MenuItem>
+            <MenuItem value={300}>300</MenuItem>
+          </Select>
+          <Pagination
+            style={{ display: 'flex' }}
+            classes={{
+              rootStandard: classes.pagenationStandardButton,
+              rootCurrent: classes.pagenationStandardButton,
+              rootEnd: classes.pagenationStandardButton,
+              rootEllipsis: classes.pagenationRootEllipsis,
+            }}
+            limit={perPage}
+            offset={offset}
+            total={drawList.length}
+            onClick={(e, offset) => handleClickPagination(offset)}
+          />
         </div>
-      </div>
-      <div style={{ display: 'flex' }}>
-        <Select
-          value={perPage}
-          onChange={e => {
-            setPerPage(Number(e.target.value));
-          }}
-        >
-          <MenuItem value={50}>50</MenuItem>
-          <MenuItem value={100}>100</MenuItem>
-          <MenuItem value={300}>300</MenuItem>
-        </Select>
-        <Pagination limit={perPage} offset={offset} total={drawList.length} onClick={(e, offset) => handleClickPagination(offset)} />
       </div>
       {/* リスト */}
-      <Grid container direction="row" justify={'flex-start'} alignItems={'flex-start'} spacing={1}>
-        {drawList.slice(offset, offset + perPage).map(item => (
-          <Parts {...item} />
-        ))}
-      </Grid>
+      <div
+        style={{
+          paddingTop: 140,
+        }}
+      >
+        <Grid container direction="row" justify={'space-around'} alignItems={'flex-start'} spacing={1}>
+          {drawList.slice(offset, offset + perPage).map(item => (
+            <Parts key={item.image} {...item} />
+          ))}
+        </Grid>
+      </div>
     </div>
   );
 };

@@ -14,7 +14,9 @@ import MenuIcon from '@material-ui/icons/Menu';
 const styles = (theme: Theme) =>
   createStyles({
     root: {},
-    toolbar: {},
+    toolbar: {
+      maxWidth: '80vw',
+    },
   });
 
 type ComponentProps = {
@@ -53,7 +55,7 @@ class ResponsiveDrawer extends React.Component<PropsType, LocalState> {
 
     return (
       <div className={classes.root}>
-        <AppBar position={'static'}>
+        <AppBar position={'fixed'}>
           <Toolbar>
             <IconButton color="inherit" onClick={this.handleOpen}>
               <MenuIcon />
@@ -63,8 +65,7 @@ class ResponsiveDrawer extends React.Component<PropsType, LocalState> {
             </Typography>
           </Toolbar>
         </AppBar>
-        <Drawer open={this.state.drawerOpen} onClose={this.handleClose}>
-          <div className={classes.toolbar} />
+        <Drawer open={this.state.drawerOpen} onClose={this.handleClose} classes={{ paper: classes.toolbar }}>
           <Divider />
           <div onClick={this.handleClose} onKeyDown={this.handleClose}>
             {this.props.children}

@@ -12,7 +12,7 @@ import LazyImage from '../../atom/LazyImage';
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
-      margin: 10,
+      margin: 3,
     },
     header: {
       padding: 5,
@@ -46,7 +46,7 @@ export type ComponentProps = Parts;
 export type ActionProps = {};
 type PropsType = ComponentProps & ActionProps;
 
-const CordinateThumb: React.SFC<PropsType> = (props: PropsType) => {
+const Parts: React.SFC<PropsType> = (props: PropsType) => {
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(false);
   const handleExpandClick = () => setExpanded(!expanded);
@@ -114,4 +114,4 @@ const CordinateThumb: React.SFC<PropsType> = (props: PropsType) => {
   );
 };
 
-export default CordinateThumb;
+export default Parts;
